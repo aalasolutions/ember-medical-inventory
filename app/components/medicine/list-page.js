@@ -30,13 +30,15 @@ export default Component.extend({
   actions: {
     addNewMedicine() {
 
-      let newCat = this.store.createRecord('medicine');
-      set(newCat, 'name', get(this, 'newItem'));
-      set(newCat, 'category', this.store.peekRecord('category', get(this, 'newCatId')));
+      let medicine = this.store.createRecord('medicine');
+      set(medicine, 'name', get(this, 'newItem'));
+      if(get(this, 'newCatId')){
+        set(medicine, 'category', this.store.peekRecord('category', get(this, 'newCatId')));
+      }
       set(this, 'newItem', '');
       set(this, 'newCatId', null);
 
-      newCat.save().then(() => {
+      medicine.save().then(() => {
         this.toggleProperty('addNewMed');
         window.plugins.toast.show('Medicine Created', 1500, 'bottom');
 
@@ -52,33 +54,26 @@ export default Component.extend({
     },
 
     editMedicine(medicine) {
-      set(this, 'editId', medicine.id);
+      set(this, 'editId', get(medicine, 'id'));
       set(this, 'editItem', medicine);
+      set(this, 'newCatId', get(medicine, 'category.id'));
       next(this, () => {
         this.$('.edit_medicine_input input').focus();
       });
 
     },
-    editMedicineComplete(medicine) {
-      medicine.save();
-      set(this, 'editId', 0);
-      // this.get('message').success("Medicine Updated");
-      window.plugins.toast.show('Medicine Updated', 1500, 'bottom');
-
-    },
 
     editMedicineSave(medicine) {
-
-      set(medicine, 'category', this.store.peekRecord('category', get(this, 'newCatId')));
-
+      if(get(this, 'newCatId')){
+        set(medicine, 'category', this.store.peekRecord('category', get(this, 'newCatId')));
+      }
       medicine.save();
+
       set(this, 'editId', null);
       set(this, 'editItem', null);
       set(this, 'newCatId', null);
 
-
       window.plugins.toast.show('Medicine Updated', 1500, 'bottom');
-
 
     },
     editMedicineCancel(medicine) {
@@ -88,14 +83,18 @@ export default Component.extend({
     },
     deleteMedicine(medicine) {
 
-      this.get('messageBox').confirm("Are you sure you want to delete this medicine", "Warning", {
+      this.get('messageBox').confirm("Are you sure you want to delete this medicine. All of its inventory will be removed as well", "Warning", {
         confirmButtonText: 'OK',
         cancelButtonText : 'Cancel',
         type             : 'warning',
         closeOnClickModal: true,
       }).then((action) => {
         if ('confirm' === action) {
+
+          let invent = get(medicine, 'inventory');
+          invent.forEach((i) => i.destroyRecord());
           medicine.destroyRecord();
+
           window.plugins.toast.show('Medicine Deleted', 1500, 'bottom');
 
         }

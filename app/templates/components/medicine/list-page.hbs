@@ -68,10 +68,11 @@
           {{/el-button-group}}
         {{/row.el-col}}
       {{/el-row}}
-
       {{#el-row type="flex" as |row|}}
         {{#row.el-col span=16}}
           <select onchange={{action (mut newCatId) value="target.value"}}>
+            <option selected="true" disabled="disabled">Select Category</option>
+
             {{#each categories as |cat|}}
               <option selected={{eq cat.id editItem.category.id}} value={{cat.id}}>{{cat.title}}</option>
             {{/each}}
@@ -112,7 +113,6 @@
             size="mini"
             action=(action "deleteMedicine" med)}}
           {{/el-button}}
-
         {{/row.el-col}}
       {{/el-row}}
     {{/card.body}}
