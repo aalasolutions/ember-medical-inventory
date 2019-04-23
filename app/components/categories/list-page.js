@@ -53,16 +53,11 @@ export default Component.extend({
       }, 500);
 
     },
-    editCategoryComplete(category) {
-      category.save();
-      set(this, 'editId', 0);
-      window.plugins.toast.show('Category Updated', 1500, 'bottom');
-
-    },
     editCategorySave(category) {
       category.save();
       set(this, 'editId', null);
       set(this, 'editItem', null);
+      window.plugins.toast.show('Category Updated', 1500, 'bottom');
     },
     editCategoryCancel(category) {
       category.rollbackAttributes();
@@ -71,18 +66,26 @@ export default Component.extend({
     },
 
     deleteCategory(category) {
+      if(!get(category,'medicine.length')){
+        this.get('messageBox').confirm("Are you sure you want to delete this category", "Warning", {
+          confirmButtonText: 'OK',
+          cancelButtonText : 'Cancel',
+          type             : 'warning',
+          closeOnClickModal: true,
+        }).then((action) => {
+          if ('confirm' === action) {
+            category.destroyRecord();
+            window.plugins.toast.show('Category Deleted', 1500, 'bottom');
+          }
+        }).catch();
+      } else{
+        this.get('messageBox').alert("Unable to delete this category. There are some medicines with this", "Error", {
+          closeOnClickModal: true,
+          type             : 'warning',
 
-      this.get('messageBox').confirm("Are you sure you want to delete this category", "Warning", {
-        confirmButtonText: 'OK',
-        cancelButtonText : 'Cancel',
-        type             : 'warning',
-        closeOnClickModal: true,
-      }).then((action) => {
-        if ('confirm' === action) {
-          category.destroyRecord();
-          window.plugins.toast.show('Category Deleted', 1500, 'bottom');
-        }
-      });
+        }).then().catch();
+      }
+
     },
   }
 });
