@@ -1,0 +1,62 @@
+
+@import "ember-element-ui";
+.el-container{
+  height: 100vh;
+}
+
+.el-main{
+
+  margin-top: 60px;
+  background: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-height: calc(100vh - 100px);
+}
+.el-message-box{
+  width: 90%;
+}
+.el-button + .el-button{
+  margin: 0;
+}
+.el-row{
+  margin: 5px 0;
+}
+.el-header{
+  padding: 0;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 1;
+  box-shadow: 2px 0 20px rgba(0,0,0,0.3);
+  background-color: white;
+  & h1{
+    margin: 0.3em 0 0 0.5em;
+  }
+  & .el-button{
+    margin-top: 1.75em;
+  }
+
+  & .back_button{
+    margin-top: .75em;
+    padding-right:  .75em;
+    padding-left:  .75em;
+  }
+}
+.el-footer{
+  padding: 0;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  background-color: black;
+  & .el-button-group{
+    display: flex;
+  }
+  & .el-button{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    border-radius: 0;
+
+  }
+}

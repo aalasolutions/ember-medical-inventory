@@ -1,0 +1,49 @@
+{{#el-container}}
+  {{#el-header}}
+    {{#el-row  type="flex" as |row|}}
+      {{#row.el-col span=19}}
+        <h1>Categories</h1>
+      {{/row.el-col}}
+      {{#row.el-col span=5}}
+        {{#liquid-if addNewCat class="addNew"}}
+          {{#el-button
+            color="warning"
+            round=true
+            size="mini"
+            class="right"
+            action=(action "toggleAddNewForm")
+          }}
+            Cancel
+          {{/el-button}}
+        {{else}}
+          {{#el-button
+            color="primary"
+            icon="el-icon-circle-plus-outline"
+            round=true
+            size="mini"
+            class="right"
+            action=(action "toggleAddNewForm")
+          }}
+            Add
+          {{/el-button}}
+        {{/liquid-if}}
+      {{/row.el-col}}
+    {{/el-row}}
+
+  {{/el-header}}
+  {{#el-main}}
+    {{categories/list-page addNewCat=addNewCat}}
+  {{/el-main}}
+
+
+  {{#el-footer height="40px"}}
+    {{#el-button-group}}
+      {{#el-button color="primary"  action=(action "changeRoute" "categories")}}
+        Categories
+      {{/el-button}}
+      {{#el-button color="primary" action=(action "changeRoute" "medicines")}}
+        Medicines
+      {{/el-button}}
+    {{/el-button-group}}
+  {{/el-footer}}
+{{/el-container}}

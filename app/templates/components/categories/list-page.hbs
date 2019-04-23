@@ -1,0 +1,99 @@
+{{#liquid-if addNewCat class="addNew"}}
+
+  {{#el-card class="box-card" as |card|}}
+    {{#card.body}}
+
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=16}}
+          {{el-input class="new_category_input" size="mini" value=newItem}}
+        {{/row.el-col}}
+        {{#row.el-col span=8}}
+          {{#el-button-group}}
+            {{#el-button
+              color="success"
+              icon="el-icon-check"
+              size="mini"
+              action=(action "addNewCategory")}}
+            {{/el-button}}
+
+            {{#el-button
+              color="warning"
+              size="mini"
+              icon="el-icon-close"
+              action=(action "cancelAdd")}}
+            {{/el-button}}
+          {{/el-button-group}}
+
+        {{/row.el-col}}
+
+      {{/el-row}}
+
+    {{/card.body}}
+  {{/el-card}}
+{{/liquid-if}}
+
+
+
+{{#liquid-if  editId class="addNew"}}
+
+  {{#el-card class="box-card" as |card|}}
+    {{#card.body}}
+
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=16}}
+          {{el-input class="edit_category_input" size="mini" value=editItem.title}}
+        {{/row.el-col}}
+        {{#row.el-col span=8}}
+          {{#el-button-group}}
+            {{#el-button
+              color="success"
+              icon="el-icon-check"
+              size="mini"
+              action=(action "editCategorySave" editItem)}}
+            {{/el-button}}
+
+            {{#el-button
+              color="warning"
+              size="mini"
+              icon="el-icon-close"
+              action=(action "editCategoryCancel" editItem)}}
+            {{/el-button}}
+          {{/el-button-group}}
+
+        {{/row.el-col}}
+
+      {{/el-row}}
+
+    {{/card.body}}
+  {{/el-card}}
+{{/liquid-if}}
+
+
+{{#each categories as | cat |}}
+  {{#el-card class="box-card" as |card|}}
+    {{#card.body}}
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=19}}
+          {{cat.title}}
+        {{/row.el-col}}
+        {{#row.el-col span=5}}
+          {{#el-button
+            color="info"
+            icon="el-icon-edit"
+            circle=true
+            size="mini"
+            action=(action "editCategory" cat)}}
+          {{/el-button}}
+
+          {{#el-button
+            color="danger"
+            icon="el-icon-delete"
+            circle=true
+            size="mini"
+            action=(action "deleteCategory" cat)}}
+          {{/el-button}}
+        {{/row.el-col}}
+      {{/el-row}}
+    {{/card.body}}
+  {{/el-card}}
+{{/each}}

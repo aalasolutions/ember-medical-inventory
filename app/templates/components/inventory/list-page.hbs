@@ -1,0 +1,119 @@
+{{#liquid-if addNewInvent class="addNew"}}
+  {{#el-card class="box-card" as |card|}}
+    {{#card.body}}
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=24}}
+          {{el-input class="new_medicine_input" type="number" min="0" max="9999" step="1" size="mini"
+                     value=newInventoryItem.quantity}}
+        {{/row.el-col}}
+      {{/el-row}}
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=24}}
+          {{el-input type="date" size="mini" value=newInventoryItem.expiry}}
+        {{/row.el-col}}
+      {{/el-row}}
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=24}}
+          {{el-input size="mini" value=newInventoryItem.notes}}
+        {{/row.el-col}}
+      {{/el-row}}
+
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=16}}
+          {{#el-button-group}}
+            {{#el-button
+              color="success"
+              icon="el-icon-check"
+              size="mini"
+              action=(action "addNewInventory")}}
+            {{/el-button}}
+            {{#el-button
+              color="warning"
+              icon="el-icon-close"
+              size="mini"
+              action=(action "cancelAdd")}}
+            {{/el-button}}
+          {{/el-button-group}}
+        {{/row.el-col}}
+      {{/el-row}}
+
+    {{/card.body}}
+  {{/el-card}}
+
+{{/liquid-if}}
+
+
+{{#liquid-if editItem class="addNew"}}
+  {{#el-card class="box-card" as |card|}}
+    {{#card.body}}
+
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=16}}
+          {{el-input  class="edit_medicine_input" size="mini" value=editItem.name}}
+        {{/row.el-col}}
+        {{#row.el-col span=8}}
+          {{#el-button-group}}
+            {{#el-button
+              color="success"
+              icon="el-icon-check"
+              size="mini"
+              action=(action "editInventorySave" editItem)}}
+            {{/el-button}}
+            {{#el-button
+              color="warning"
+              icon="el-icon-close"
+              size="mini"
+              action=(action "editInventoryCancel" editItem)}}
+            {{/el-button}}
+          {{/el-button-group}}
+        {{/row.el-col}}
+      {{/el-row}}
+
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=16}}
+          <select onchange={{action (mut newCatId) value="target.value"}}>
+            {{#each categories as |cat|}}
+              <option selected={{eq cat.id editItem.category.id}} value={{cat.id}}>{{cat.title}}</option>
+            {{/each}}
+          </select>
+        {{/row.el-col}}
+      {{/el-row}}
+
+
+
+    {{/card.body}}
+  {{/el-card}}
+
+{{/liquid-if}}
+{{#each inventory as | invnt |}}
+  {{#el-card class="box-card" as |card|}}
+    {{#card.body}}
+      {{#el-row type="flex" as |row|}}
+        {{#row.el-col span=19}}
+          {{invnt.quantity}} <br>
+          {{invnt.notes}} <br>
+          {{invnt.expiry}} <br>
+          {{invnt.created}} <br>
+        {{/row.el-col}}
+        {{#row.el-col span=5}}
+          {{#el-button
+            color="info"
+            icon="el-icon-edit"
+            circle=true
+            size="mini"
+            action=(action "editInventory" invnt)}}
+          {{/el-button}}
+
+          {{#el-button
+            color="danger"
+            icon="el-icon-delete"
+            circle=true
+            size="mini"
+            action=(action "deleteInventory" invnt)}}
+          {{/el-button}}
+
+        {{/row.el-col}}
+      {{/el-row}}
+    {{/card.body}}
+  {{/el-card}}
+{{/each}}
