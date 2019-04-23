@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'medicine',
+    modulePrefix: 'medicine-inventory',
     environment,
     rootURL: '',
     locationType: 'hash',

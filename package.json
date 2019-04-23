@@ -1,5 +1,5 @@
 {
-  "name": "Medicine Inventory",
+  "name": "medicine-inventory",
   "version": "0.5.2",
   "private": true,
   "description": "Mini app to manage your medicine inventory and their expiry",
