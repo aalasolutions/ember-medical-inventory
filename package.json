@@ -1,11 +1,24 @@
 {
-  "name": "medicine",
-  "version": "0.0.0",
+  "name": "Medicine Inventory",
+  "version": "0.5.2",
   "private": true,
-  "description": "Small description for medicine goes here",
-  "repository": "",
+  "description": "Mini app to manage your medicine inventory and their expiry",
+  "keywords": [
+    "medicne inventory",
+    "ember",
+    "corber"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aalasolutions/ember-medical-inventory"
+  },
+
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Aamir Mahmood",
+    "email": "aamir@aalasolutions.com",
+    "url": "https://aalasolutions.com"
+  },
   "directories": {
     "doc": "doc",
     "test": "tests"
