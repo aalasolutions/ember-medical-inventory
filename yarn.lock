@@ -4530,10 +4530,10 @@ ember-data@~3.8.0:
     semver "^5.6.0"
     silent-error "^1.1.1"
 
-ember-element-ui@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/ember-element-ui/-/ember-element-ui-0.2.1.tgz#07c9e1ca0bb7a625ff97ddd6c1e46ea0b1069a56"
-  integrity sha512-ysnXYx9wBb+bl4rFkSXRgChTQf1g3Yf4eko+wUVHlbkBEqrjbup4ytLX0jLDNlB3Jg9YmfQqIRoix4vC/5KNvg==
+ember-element-ui@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ember-element-ui/-/ember-element-ui-0.2.2.tgz#8cac4b61d69a0778e1f3e338867f468f10018781"
+  integrity sha512-3IkcVmds7hsrTFWUA5LuGbVw0qRheIMuwwrfLkN+ZuXMiitfuXXPwGpKU4OO7DAdv2fhr2KAYFku0TGfZnhTNA==
   dependencies:
     animate.css "^3.7.0"
     broccoli-funnel "^2.0.1"
