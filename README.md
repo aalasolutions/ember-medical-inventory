@@ -1,6 +1,6 @@
 # Medicine Inventory
 
-A Sample application developed with EmberJS, Corber.io, ember-element-ui. 
+A Sample application developed with [Ember CLI](https://ember-cli.com/), [Corber.io](http://corber.io/), [ember-element-ui](https://github.com/aalasolutions/ember-element-ui). 
 
 Some modifications are made for the CSS,
 
@@ -24,12 +24,8 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `corber start`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 
 ### Building
 
 * http://corber.io/pages/workflow/building
-
-
