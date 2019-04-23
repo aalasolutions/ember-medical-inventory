@@ -1,7 +1,7 @@
 import Component            from '@ember/component';
 import {set, get, computed} from '@ember/object';
 import {inject as service}  from '@ember/service';
-import {later}               from '@ember/runloop';
+import {later}              from '@ember/runloop';
 
 export default Component.extend({
   store     : service(),
@@ -56,7 +56,6 @@ export default Component.extend({
     editCategoryComplete(category) {
       category.save();
       set(this, 'editId', 0);
-      // this.get('message').success("Category Updated");
       window.plugins.toast.show('Category Updated', 1500, 'bottom');
 
     },

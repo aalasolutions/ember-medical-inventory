@@ -21,8 +21,8 @@ export default Component.extend({
     set(this, 'catSortProps', ['title:asc']);
     set(this, 'medSortProps', ['name:asc']);
   },
-  didUpdateAttrs(){
-    next(this, ()=>{
+  didUpdateAttrs() {
+    next(this, () => {
       this.$('.new_medicine_input input').focus();
     });
 
@@ -38,8 +38,6 @@ export default Component.extend({
 
       newCat.save().then(() => {
         this.toggleProperty('addNewMed');
-
-        // this.get('message').success("Medicine created");
         window.plugins.toast.show('Medicine Created', 1500, 'bottom');
 
       });
@@ -56,7 +54,7 @@ export default Component.extend({
     editMedicine(medicine) {
       set(this, 'editId', medicine.id);
       set(this, 'editItem', medicine);
-      next(this, ()=>{
+      next(this, () => {
         this.$('.edit_medicine_input input').focus();
       });
 

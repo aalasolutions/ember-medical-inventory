@@ -1,13 +1,12 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
+import RSVP  from 'rsvp';
 
 export default Route.extend({
 
-
   model() {
     return RSVP.hash({
-      category: this.store.findAll('category'),
-      medicine: this.store.findAll('medicine'),
+      category : this.store.findAll('category'),
+      medicine : this.store.findAll('medicine'),
       inventory: this.store.findAll('inventory'),
     });
   },

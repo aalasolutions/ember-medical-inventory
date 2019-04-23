@@ -8,14 +8,12 @@ export default Component.extend({
   message   : service(),
   messageBox: service('message-box'),
 
-  inventory: computed.sort('invent', 'inventSortProps'),
+  inventory       : computed.sort('invent', 'inventSortProps'),
   newInventoryItem: null,
   init() {
     this._super(...arguments);
     set(this, 'invent', this.store.peekAll('inventory'));
-    // set(this, 'categories', this.store.peekAll('category'));
     set(this, 'inventSortProps', ['expiry:asc']);
-
     set(this, 'medicineModel', this.store.peekRecord('medicine', this.get('model.id')));
     this.makeNewObj();
   },
@@ -28,23 +26,15 @@ export default Component.extend({
       expiry  : new Date(),
       created : new Date(),
     });
-    console.log(newItem);
-
 
     set(this, 'newInventoryItem', newItem);
-    console.log(get(this, 'newInventoryItem'));
-
   },
   actions: {
 
     addNewInventory() {
-
-
       let newInventory = this.store.createRecord('inventory');
 
       let inventoryData = get(this, 'newInventoryItem');
-      console.log(inventoryData);
-// return;
       newInventory.set('medicine', inventoryData.get('medicine'));
       newInventory.set('quantity', inventoryData.get('quantity'));
       newInventory.set('notes', inventoryData.get('notes'));
@@ -53,16 +43,12 @@ export default Component.extend({
       newInventory.save().then(() => {
         this.toggleProperty('addNewInvent');
         this.makeNewObj();
-        // this.get('message').success("Inventory created");
         window.plugins.toast.show('Inventory Created', 1500, 'bottom');
-
       });
     },
     cancelAdd() {
       this.toggleProperty('addNewInvent');
       this.makeNewObj();
-
-
     },
     toggleAddNewForm() {
       this.toggleProperty('addNewInvent');
@@ -70,8 +56,6 @@ export default Component.extend({
 
     editInventory(inventory) {
       let inventoryData = get(this, 'newInventoryItem');
-      console.log(inventoryData);
-      return;
 
       set(this, 'editId', inventory.id);
       set(this, 'editItem', inventory);
@@ -81,6 +65,7 @@ export default Component.extend({
       }, 500);
 
     },
+
     editInventoryComplete(inventory) {
       inventory.save();
       set(this, 'editId', 0);
@@ -123,6 +108,5 @@ export default Component.extend({
         }
       });
     },
-
   }
 });
