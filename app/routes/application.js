@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
 import RSVP  from 'rsvp';
+import {inject as service}  from '@ember/service';
 
 export default Route.extend({
+  splashScreenService: service('ember-cordova/splash'),
 
   model() {
     return RSVP.hash({
@@ -10,6 +12,10 @@ export default Route.extend({
       inventory: this.store.findAll('inventory'),
     });
   },
+
+  afterModel() {
+    this.get('splashScreenService').hide();
+  }
   //
   // activate(){
   //   cordova.plugins.notification.local.schedule({
