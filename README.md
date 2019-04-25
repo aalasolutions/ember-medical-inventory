@@ -2,7 +2,9 @@
 
 A Sample application developed with [Ember CLI](https://ember-cli.com/), [Corber.io](http://corber.io/), [ember-element-ui](https://github.com/aalasolutions/ember-element-ui). 
 
-Some modifications are made for the CSS,
+Some modifications are made for the CSS file of ember-element-ui.
+
+App is published on [Play Store](https://play.google.com/store/apps/details?id=com.aalasolutions.medicine.inventory)
 
 ## Prerequisites
 
