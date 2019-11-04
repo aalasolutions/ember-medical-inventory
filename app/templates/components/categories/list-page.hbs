@@ -4,10 +4,10 @@
     {{#card.body}}
 
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=16}}
+        {{#row.col span=16}}
           {{el-input class="new_category_input" size="mini" value=newItem}}
-        {{/row.el-col}}
-        {{#row.el-col span=8}}
+        {{/row.col}}
+        {{#row.col span=8}}
           {{#el-button-group}}
             {{#el-button
               color="success"
@@ -24,7 +24,7 @@
             {{/el-button}}
           {{/el-button-group}}
 
-        {{/row.el-col}}
+        {{/row.col}}
 
       {{/el-row}}
 
@@ -36,14 +36,14 @@
 
 {{#liquid-if  editId class="addNew"}}
 
-  {{#el-card class="box-card" as |card|}}
+  {{#el-card shadow="hover" class="box-card" as |card|}}
     {{#card.body}}
 
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=16}}
+        {{#row.col span=16}}
           {{el-input class="edit_category_input" size="mini" value=editItem.title}}
-        {{/row.el-col}}
-        {{#row.el-col span=8}}
+        {{/row.col}}
+        {{#row.col span=8}}
           {{#el-button-group}}
             {{#el-button
               color="success"
@@ -60,7 +60,7 @@
             {{/el-button}}
           {{/el-button-group}}
 
-        {{/row.el-col}}
+        {{/row.col}}
 
       {{/el-row}}
 
@@ -73,10 +73,10 @@
   {{#el-card class="box-card" as |card|}}
     {{#card.body}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=19}}
+        {{#row.col span=19}}
           {{cat.title}}
-        {{/row.el-col}}
-        {{#row.el-col span=5}}
+        {{/row.col}}
+        {{#row.col span=5}}
           {{#el-button
             color="info"
             icon="el-icon-edit"
@@ -92,7 +92,7 @@
             size="mini"
             action=(action "deleteCategory" cat)}}
           {{/el-button}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
     {{/card.body}}
   {{/el-card}}

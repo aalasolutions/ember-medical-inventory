@@ -2,7 +2,7 @@
   {{#el-header}}
     {{#el-row  type="flex" as |row|}}
 
-      {{#row.el-col span=2}}
+      {{#row.col span=2}}
         {{#el-button
           color="text"
           class="back_button"
@@ -10,12 +10,12 @@
           action=(action "changeRoute" "medicines")
         }}
         {{/el-button}}
-      {{/row.el-col}}
+      {{/row.col}}
 
-      {{#row.el-col span=17}}
+      {{#row.col span=17}}
         <h1>Inventory</h1>
-      {{/row.el-col}}
-      {{#row.el-col span=5}}
+      {{/row.col}}
+      {{#row.col span=5}}
 
         {{#liquid-if addNewInvent class="addNew"}}
           {{#el-button
@@ -39,7 +39,7 @@
             Add
           {{/el-button}}
         {{/liquid-if}}
-      {{/row.el-col}}
+      {{/row.col}}
     {{/el-row}}
 
   {{/el-header}}
@@ -51,14 +51,4 @@
   {{/el-main}}
 
 
-  {{#el-footer height="40px"}}
-    {{#el-button-group}}
-      {{#el-button color="primary"  action=(action "changeRoute" "categories")}}
-        Categories
-      {{/el-button}}
-      {{#el-button color="primary" action=(action "changeRoute" "medicines")}}
-        Medicines
-      {{/el-button}}
-    {{/el-button-group}}
-  {{/el-footer}}
 {{/el-container}}

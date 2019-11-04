@@ -2,7 +2,7 @@
   {{#el-card class="box-card" as |card|}}
     {{#card.body}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=24}}
+        {{#row.col span=24}}
           {{el-input
             showClear=true
             placeholder="Quantity"
@@ -13,30 +13,30 @@
             step="1"
             size="mini"
             value=newInventoryItem.quantity}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=24}}
+        {{#row.col span=24}}
           {{el-input
             showClear=true
             placeholder="Expiry Date"
             type="date"
             size="mini"
             value=newInventoryItem.expiry}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=24}}
+        {{#row.col span=24}}
           {{el-input
             showClear=true
             placeholder="Notes"
             size="mini"
             value=newInventoryItem.notes}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
 
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=16}}
+        {{#row.col span=16}}
           {{#el-button-group}}
             {{#el-button
               color="success"
@@ -51,7 +51,7 @@
               action=(action "cancelAdd")}}
             {{/el-button}}
           {{/el-button-group}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
 
     {{/card.body}}
@@ -64,7 +64,7 @@
   {{#el-card class="box-card" as |card|}}
     {{#card.body}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=24}}
+        {{#row.col span=24}}
           {{el-input
             showClear=true
             placeholder="Quantity"
@@ -75,30 +75,30 @@
             step="1"
             size="mini"
             value=editItem.quantity}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=24}}
+        {{#row.col span=24}}
           {{el-input
             showClear=true
             placeholder="Expiry Date"
             type="date"
             size="mini"
             value=editItem.expiry}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=24}}
+        {{#row.col span=24}}
           {{el-input
             showClear=true
             placeholder="Notes"
             size="mini"
             value=editItem.notes}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
 
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=16}}
+        {{#row.col span=16}}
           {{#el-button-group}}
             {{#el-button
               color="success"
@@ -113,7 +113,7 @@
               action=(action "editInventoryCancel" )}}
             {{/el-button}}
           {{/el-button-group}}
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
 
     {{/card.body}}
@@ -124,42 +124,42 @@
   {{#el-card class="box-card" as |card|}}
     {{#card.body}}
       {{#el-row type="flex" as |row|}}
-        {{#row.el-col span=19}}
+        {{#row.col span=19}}
           {{#el-row type="flex" as |row|}}
-            {{#row.el-col span=8}}
+            {{#row.col span=8}}
               Quantity
-            {{/row.el-col}}
-            {{#row.el-col span=16}}
+            {{/row.col}}
+            {{#row.col span=16}}
               {{invnt.quantity}}
-            {{/row.el-col}}
+            {{/row.col}}
           {{/el-row}}
           {{#el-row type="flex" as |row|}}
 
-            {{#row.el-col span=8}}
+            {{#row.col span=8}}
               Notes
-            {{/row.el-col}}
-            {{#row.el-col span=16}}
+            {{/row.col}}
+            {{#row.col span=16}}
               {{invnt.notes}}
-            {{/row.el-col}}
+            {{/row.col}}
           {{/el-row}}
           {{#el-row type="flex" as |row|}}
-            {{#row.el-col span=8}}
+            {{#row.col span=8}}
               Expiry
-            {{/row.el-col}}
-            {{#row.el-col span=16}}
+            {{/row.col}}
+            {{#row.col span=16}}
               {{moment-format  invnt.expiry "MMM D, YYYY"}}
-            {{/row.el-col}}
+            {{/row.col}}
           {{/el-row}}
           {{#el-row type="flex" as |row|}}
-            {{#row.el-col span=8}}
+            {{#row.col span=8}}
               Added
-            {{/row.el-col}}
-            {{#row.el-col span=16}}
+            {{/row.col}}
+            {{#row.col span=16}}
               {{moment-format  invnt.created "MMM D, YYYY"}}
-            {{/row.el-col}}
+            {{/row.col}}
           {{/el-row}}
-        {{/row.el-col}}
-        {{#row.el-col span=5}}
+        {{/row.col}}
+        {{#row.col span=5}}
           {{#el-button
             color="info"
             icon="el-icon-edit"
@@ -176,7 +176,7 @@
             action=(action "deleteInventory" invnt)}}
           {{/el-button}}
 
-        {{/row.el-col}}
+        {{/row.col}}
       {{/el-row}}
     {{/card.body}}
   {{/el-card}}

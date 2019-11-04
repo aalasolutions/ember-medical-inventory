@@ -1,10 +1,10 @@
 {{#el-container}}
   {{#el-header}}
     {{#el-row  type="flex" as |row|}}
-      {{#row.el-col span=19}}
+      {{#row.col span=19}}
         <h1>Categories</h1>
-      {{/row.el-col}}
-      {{#row.el-col span=5}}
+      {{/row.col}}
+      {{#row.col span=5}}
         {{#liquid-if addNewCat class="addNew"}}
           {{#el-button
             color="warning"
@@ -27,7 +27,7 @@
             Add
           {{/el-button}}
         {{/liquid-if}}
-      {{/row.el-col}}
+      {{/row.col}}
     {{/el-row}}
 
   {{/el-header}}
@@ -36,14 +36,5 @@
   {{/el-main}}
 
 
-  {{#el-footer height="40px"}}
-    {{#el-button-group}}
-      {{#el-button color="primary"  action=(action "changeRoute" "categories")}}
-        Categories
-      {{/el-button}}
-      {{#el-button color="primary" action=(action "changeRoute" "medicines")}}
-        Medicines
-      {{/el-button}}
-    {{/el-button-group}}
-  {{/el-footer}}
+
 {{/el-container}}
