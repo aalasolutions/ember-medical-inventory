@@ -2,16 +2,16 @@
 
 A Sample application developed with [Ember CLI](https://ember-cli.com/), [Corber.io](http://corber.io/), [ember-element-ui](https://github.com/aalasolutions/ember-element-ui). 
 
-Some modifications are made for the CSS file of ember-element-ui.
-
-App is published on [Play Store](https://play.google.com/store/apps/details?id=com.aalasolutions.medicine.inventory)
+This README outlines the details of collaborating on this Ember application.
+A short introduction of this app could easily go here.
 
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
+* [Node.js](https://nodejs.org/)
+* [Yarn](https://yarnpkg.com/)
 * [Ember CLI](https://ember-cli.com/)
 * [Corber.io](http://corber.io/)
 * [Apache Cordova](https://cordova.apache.org/)
@@ -27,6 +27,20 @@ You will need the following things properly installed on your computer.
 
 * `corber start`
 
+### Code Generators
+
+Make use of the many generators for code, try `ember help generate` for more details
+
+### Running Tests
+
+* `ember test`
+* `ember test --server`
+
+### Linting
+
+* `yarn lint:hbs`
+* `yarn lint:js`
+* `yarn lint:js --fix`
 
 ### Building
 
