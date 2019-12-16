@@ -1,9 +1,10 @@
 import DS from 'ember-data';
+const { Model, attr, belongsTo } = DS;
 
-export default DS.Model.extend({
-  medicine: DS.belongsTo('medicine'),
-  quantity: DS.attr('number'),
-  notes   : DS.attr('string'),
-  expiry  : DS.attr('date'),
-  created : DS.attr('date'),
-});
+export default class InventoryModel extends Model{
+  @belongsTo('medicine') medicine;
+  @attr('number') quantity;
+  @attr('string') notes;
+  @attr('date') expiry;
+  @attr('date') created;
+}

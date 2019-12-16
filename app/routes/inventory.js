@@ -1,9 +1,7 @@
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-
-
+export default class InventoryRoute extends Route {
   model(params) {
-    return this.store.findRecord('medicine', params.id)
-  }
-});
+    return this.store.findRecord('medicine', params.id);
+  };
+}

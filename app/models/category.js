@@ -1,7 +1,7 @@
 import DS from 'ember-data';
+const { Model, attr, hasMany } = DS;
 
-export default DS.Model.extend({
-  title: DS.attr('string'),
-  medicine: DS.hasMany('medicine'),
-
-});
+export default class CategoryModel extends Model {
+  @attr('string') title;
+  @hasMany('medicine') medicine;
+}

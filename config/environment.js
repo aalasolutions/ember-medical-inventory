@@ -4,12 +4,12 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'medicine-inventory',
     environment,
-    rootURL: '',
-    locationType: 'hash',
+    rootURL: '/',
+    locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
-        // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
+        // e.g. EMBER_MODULE_UNIFICATION: true
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
@@ -20,13 +20,6 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
-
-    'ember-local-storage': {
-      namespace: true, // will use the modulePrefix e.g. 'my-app'
-      keyDelimiter: '/', // will use / as a delimiter - the default is :
-      "includeEmberDataSupport": true,
-
     }
   };
 

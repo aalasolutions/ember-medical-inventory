@@ -1,12 +1,14 @@
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  actions: {
-    changeRoute(route) {
-      this.transitionToRoute(route);
-    },
-    toggleAddNewForm() {
-      this.toggleProperty('addNewInvent');
-    },
+export default class InventoryController extends Controller {
+  @action
+  changeRoute(route) {
+    this.transitionToRoute(route);
   }
-});
+
+  @action
+  toggleAddNewForm() {
+    this.toggleProperty('addNewInvent');
+  }
+}

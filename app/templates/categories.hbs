@@ -1,40 +1,39 @@
-{{#el-container}}
-  {{#el-header}}
-    {{#el-row  type="flex" as |row|}}
-      {{#row.col span=19}}
+<ElContainer>
+  <ElHeader>
+    <ElRow @type="flex" as |row|>
+      <row.col @span="19">
         <h1>Categories</h1>
-      {{/row.col}}
-      {{#row.col span=5}}
-        {{#liquid-if addNewCat class="addNew"}}
-          {{#el-button
-            color="warning"
-            round=true
-            size="mini"
+      </row.col>
+      <row.col @span="5">
+        {{#liquid-if @addNewCat class="addNew"}}
+          <ElButton
+            @color="warning"
+            @round={{true}}
+            @size="mini"
             class="right"
-            action=(action "toggleAddNewForm")
-          }}
+            @action={{this.toggleAddNewForm}}
+          >
             Cancel
-          {{/el-button}}
+          </ElButton>
         {{else}}
-          {{#el-button
-            color="primary"
-            icon="el-icon-circle-plus-outline"
-            round=true
-            size="mini"
-            class="right"
-            action=(action "toggleAddNewForm")
-          }}
+          <ElButton
+            @color="primary"
+            @icon="el-icon-circle-plus-outline"
+            @round={{true}}
+            @size="mini"
+            @class="right"
+            @action={{this.toggleAddNewForm}}
+          >
             Add
-          {{/el-button}}
+          </ElButton>
         {{/liquid-if}}
-      {{/row.col}}
-    {{/el-row}}
+      </row.col>
+    </ElRow>
 
-  {{/el-header}}
-  {{#el-main}}
-    {{categories/list-page addNewCat=addNewCat}}
-  {{/el-main}}
+  </ElHeader>
+  <ElMain>
+    <Categories::ListPage @addNewCat={{this.addNewCat}} @onCancel={{this.toggleAddNewForm}}/>
+  </ElMain>
 
 
-
-{{/el-container}}
+</ElContainer>

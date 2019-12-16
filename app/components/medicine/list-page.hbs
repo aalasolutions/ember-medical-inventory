@@ -1,0 +1,97 @@
+{{#liquid-if @addNewMed class="addNew"}}
+  <ElCard @class="box-card" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="16">
+          <ElInput {{did-insert this.setInputFocus }}  @class="new_medicine_input" @size="mini" @value={{this.newItem}} />
+        </row.col>
+        <row.col @span="8">
+          <ElButtonGroup>
+            <ElButton @color="success" @icon="el-icon-check" @size="mini" @action={{action this.addNewMedicine }}>
+            </ElButton>
+            <ElButton @color="warning" @icon="el-icon-close" @size="mini" @action={{action this.cancelAdd}}>
+            </ElButton>
+          </ElButtonGroup>
+        </row.col>
+      </ElRow>
+
+      <ElRow @type="flex" as |row|>
+        <row.col @span="16">
+          <select onchange={{action (mut this.newCatId) value="target.value"}}>
+            <option selected="true" disabled="disabled">Select Category</option>
+            {{#each this.categories as |cat|}}
+              <option value={{cat.id}}>{{cat.title}}</option>
+            {{/each}}
+          </select>
+        </row.col>
+      </ElRow>
+    </card.body>
+  </ElCard>
+{{/liquid-if}}
+
+
+{{#liquid-if this.editItem class="addNew"}}
+  <ElCard @class="box-card" as |card|>
+    <card.body>
+
+      <ElRow @type="flex" align="middle" as |row|>
+        <row.col @span="16">
+          <ElInput {{did-insert this.setInputFocus }}  @class="edit_medicine_input" @size="mini" @value={{this.editItem.name}} />
+        </row.col>
+        <row.col @span="8">
+          <ElButtonGroup>
+            <ElButton @color="success" @icon="el-icon-check" @size="mini"
+              @action={{action this.editMedicineSave this.editItem}}>
+            </ElButton>
+            <ElButton @color="warning" @icon="el-icon-close" @size="mini"
+              @action={{action this.editMedicineCancel this.editItem}}>
+            </ElButton>
+          </ElButtonGroup>
+        </row.col>
+      </ElRow>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="16">
+          <select onchange={{action (mut this.newCatId) value="target.value"}}>
+            <option selected="true" disabled="disabled">Select Category</option>
+            {{#each this.categories as |cat|}}
+              <option selected={{eq cat.id this.editItem.category.id}} value={{cat.id}}>{{cat.title}}</option>
+            {{/each}}
+          </select>
+        </row.col>
+      </ElRow>
+    </card.body>
+  </ElCard>
+
+{{/liquid-if}}
+
+
+{{#each this.medicines as | med |}}
+  <ElCard @class="box-card" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="19">
+          {{#link-to "inventory" med.id}}
+            {{med.name}} |
+            {{med.category.title}}
+          {{/link-to}}
+        </row.col>
+        <row.col @span="5">
+          {{#link-to "inventory" med.id}}
+            <ElButton @color="success" @icon="el-icon-refrigerator" @circle={{true}} @size="mini"> 
+            </ElButton>
+          {{/link-to}}
+          <ElButton 
+            @color="info"
+             @icon="el-icon-edit"
+             @circle={{true}} 
+             @size="mini"
+            @action={{action this.editMedicine med}}>
+          </ElButton>
+          <ElButton @color="danger" @icon="el-icon-delete" @circle={{true}} @size="mini"
+            @action={{action this.deleteMedicine med}}>
+          </ElButton>
+        </row.col>
+      </ElRow>
+    </card.body>
+  </ElCard>
+{{/each}}

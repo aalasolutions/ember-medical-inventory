@@ -1,0 +1,136 @@
+{{#liquid-if @addNewInvent class="addNew"}}
+  <ElCard class="box-card" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="24">
+          <ElInput {{did-insert this.setInputFocus }}  @showClear={{true}} @placeholder="Quantity" @class="new_medicine_input" @type="number" @min="0"
+            @max="9999" @step="1" @size="mini" @value={{this.newInventoryItem.quantity}} />
+        </row.col>
+      </ElRow>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="24">
+          <ElInput @showClear={{true}} @placeholder="Expiry Date" @type="date" @size="mini"
+            @value={{this.newInventoryItem.expiry}} />
+        </row.col>
+      </ElRow>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="24">
+          <ElInput @showClear={{true}} @placeholder="Notes" @size="mini" @value={{this.newInventoryItem.notes}} />
+        </row.col>
+      </ElRow>
+
+      <ElRow @type="flex" as |row|>
+        <row.col @span="16">
+          <ElButtonGroup>
+            <ElButton
+              @color="success"
+              @icon="el-icon-check"
+              @size="mini"
+              @action={{action this.addNewInventory}} >
+            </ElButton>
+            <ElButton
+              @color="warning"
+              @icon="el-icon-close"
+              @size="mini"
+              @action={{action this.cancelAdd}} >
+            </ElButton>
+          </ElButtonGroup>
+        </row.col>
+      </ElRow>
+
+    </card.body>
+  </ElCard>
+{{/liquid-if}}
+
+
+{{#liquid-if this.editItem class="addNew"}}
+  <ElCard class="box-card" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="24">
+          <ElInput {{did-insert this.setInputFocus }}  @showClear={{true}} @placeholder="Quantity" @class="new_medicine_input" @type="number" @min="0"
+            @max="9999" @step="1" @size="mini" @value={{this.editItem.quantity}} />
+        </row.col>
+      </ElRow>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="24">
+          <ElInput @showClear={{true}} @placeholder="Expiry Date" @type="date" @size="mini"
+            @value={{this.editItem.expiry}} />
+        </row.col>
+      </ElRow>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="24">
+          <ElInput @showClear={{true}} @placeholder="Notes" @size="mini" @value={{this.editItem.notes}} />
+        </row.col>
+      </ElRow>
+
+      <ElRow @type="flex" as |row|>
+        <row.col @span="16">
+
+          <ElButtonGroup>
+
+            <ElButton @color="success" @icon="el-icon-check" @size="mini" @action={{action this.editInventorySave }}>
+            </ElButton>
+            <ElButton @color="warning" @icon="el-icon-close" @size="mini" @action={{action this.editInventoryCancel}}>
+            </ElButton>
+          </ElButtonGroup>
+        </row.col>
+      </ElRow>
+
+    </card.body>
+  </ElCard>
+{{/liquid-if}}
+
+{{#each this.invent as | invnt |}}
+  <ElCard class="box-card" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="19">
+          <ElRow @type="flex" as |row|>
+            <row.col @span="8">
+              Quantity
+            </row.col>
+            <row.col @span="16">
+              {{invnt.quantity}}
+            </row.col>
+          </ElRow>
+          <ElRow @type="flex" as |row|>
+
+            <row.col @span="8">
+              Notes
+            </row.col>
+            <row.col @span="16">
+              {{invnt.notes}}
+            </row.col>
+          </ElRow>
+          <ElRow @type="flex" as |row|>
+            <row.col @span="8">
+              Expiry
+            </row.col>
+            <row.col @span="16">
+              {{moment-format  invnt.expiry "MMM D, YYYY"}}
+            </row.col>
+          </ElRow>
+          <ElRow @type="flex" as |row|>
+            <row.col @span="8">
+              Added
+            </row.col>
+            <row.col @span="16">
+              {{moment-format  invnt.created "MMM D, YYYY"}}
+            </row.col>
+          </ElRow>
+        </row.col>
+        <row.col @span="5">
+          <ElButton @color="info" @icon="el-icon-edit" @circle={{true}} @size="mini"
+            @action={{action this.editInventory invnt}}>
+          </ElButton>
+
+          <ElButton @color="danger" @icon="el-icon-delete" @circle={{true}} @size="mini"
+            @action={{action this.deleteInventory invnt}}>
+          </ElButton>
+
+        </row.col>
+      </ElRow>
+    </card.body>
+  </ElCard>
+{{/each}}

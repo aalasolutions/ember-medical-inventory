@@ -1,0 +1,63 @@
+{{#liquid-if @addNewCat class="addNew"}}
+  <ElCard class="box-card" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="16">
+          <ElInput {{did-insert this.setInputFocus }} class="new_category_input" @size="mini" @placeholder={{this.newItem}} @value={{this.newItem}} />
+        </row.col>
+        <row.col @span="8">
+          <ElButtonGroup>
+            <ElButton @color="success" @icon="el-icon-check" @size="mini" @action={{action this.addNewCategory}}>
+            </ElButton>
+
+            <ElButton @color="warning" @size="mini" @icon="el-icon-close" @action={{action this.cancelAdd}}>
+            </ElButton>
+          </ElButtonGroup>
+        </row.col>
+      </ElRow>
+    </card.body>
+  </ElCard>
+{{/liquid-if}}
+
+{{#liquid-if this.editId class="addNew"}}
+  <ElCard class="box-card" @shadow="hover" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="16">
+          <ElInput {{did-insert this.setInputFocus }}  class="edit_category_input" @size="mini" @value={{this.editItem.title}} />
+        </row.col>
+        <row.col @span="8">
+          <ElButtonGroup>
+            <ElButton @color="success" @icon="el-icon-check" @size="mini"
+              @action={{action this.editCategorySave this.editItem}}>
+            </ElButton>
+            <ElButton @color="warning" @size="mini" @icon="el-icon-close"
+              @action={{action this.editCategoryCancel this.editItem}}>
+            </ElButton>
+          </ElButtonGroup>
+        </row.col>
+      </ElRow>
+    </card.body>
+  </ElCard>
+{{/liquid-if}}
+
+{{#each this.categories as | cat |}}
+  <ElCard class="box-card" @shadow="hover" as |card|>
+    <card.body>
+      <ElRow @type="flex" as |row|>
+        <row.col @span="19">
+          {{cat.title}}
+        </row.col>
+        <row.col @span="5">
+          <ElButton @color="info" @icon="el-icon-edit" @circle={{true}} @size="mini"
+            @action={{action this.editCategory cat}}>
+          </ElButton>
+
+          <ElButton @color="danger" @icon="el-icon-delete" @circle={{true}} @size="mini"
+            @action={{action this.deleteCategory cat}}>
+          </ElButton>
+        </row.col>
+      </ElRow>
+    </card.body>
+  </ElCard>
+{{/each}}
