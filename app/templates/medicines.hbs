@@ -1,27 +1,38 @@
 <ElContainer>
   <ElHeader>
     <ElRow @type="flex" as |row|>
-
       <row.col @span="19">
-        <h1>Medicines</h1>
+        <h1>
+          Medicines
+        </h1>
       </row.col>
       <row.col @span="5">
         {{#liquid-if this.addNewMed class="addNew"}}
-          <ElButton @color="warning" @round={{true}} @size="mini" @class="right" @action={{action this.toggleAddNewForm}}>
+          <ElButton
+            @color="warning"
+            @round={{true}}
+            @size="mini"
+            @class="right"
+            @action={{action this.toggleAddNewForm}}
+          >
             Cancel
           </ElButton>
         {{else}}
-          <ElButton @color="primary" @icon="el-icon-circle-plus-outline" @round={{true}} @size="mini" @class="right"
-          @action={{action this.toggleAddNewForm}}>
+          <ElButton
+            @color="primary"
+            @icon="el-icon-circle-plus-outline"
+            @round={{true}}
+            @size="mini"
+            @class="right"
+            @action={{action this.toggleAddNewForm}}
+          >
             Add
           </ElButton>
         {{/liquid-if}}
       </row.col>
     </ElRow>
-
   </ElHeader>
   <ElMain>
     <Medicine::ListPage @addNewMed={{this.addNewMed}} @onCancel={{this.toggleAddNewForm}} />
   </ElMain>
-
 </ElContainer>

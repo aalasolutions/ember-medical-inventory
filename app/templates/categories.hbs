@@ -6,13 +6,7 @@
       </row.col>
       <row.col @span="5">
         {{#liquid-if @addNewCat class="addNew"}}
-          <ElButton
-            @color="warning"
-            @round={{true}}
-            @size="mini"
-            class="right"
-            @action={{this.toggleAddNewForm}}
-          >
+          <ElButton @color="warning" @round={{true}} @size="mini" class="right" @action={{this.toggleAddNewForm}}>
             Cancel
           </ElButton>
         {{else}}
@@ -29,11 +23,8 @@
         {{/liquid-if}}
       </row.col>
     </ElRow>
-
   </ElHeader>
   <ElMain>
-    <Categories::ListPage @addNewCat={{this.addNewCat}} @onCancel={{this.toggleAddNewForm}}/>
+    <Categories::ListPage @addNewCat={{this.addNewCat}} @onCancel={{this.toggleAddNewForm}} />
   </ElMain>
-
-
 </ElContainer>

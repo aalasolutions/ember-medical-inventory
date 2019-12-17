@@ -7,23 +7,16 @@
           @class="back_button"
           @icon="el-icon-arrow-left"
           @action={{action "changeRoute" "medicines"}}
-        >
-        </ElButton>
+        />
       </row.col>
-
       <row.col @span="17">
-        <h1>Inventory</h1>
+        <h1>
+          Inventory
+        </h1>
       </row.col>
       <row.col @span="5">
-
         {{#liquid-if this.addNewInvent class="addNew"}}
-          <ElButton
-            @color="warning"
-            @round={{true}}
-            @size="mini"
-            @class="right"
-            @action={{action "toggleAddNewForm"}}
-          >
+          <ElButton @color="warning" @round={{true}} @size="mini" @class="right" @action={{action "toggleAddNewForm"}}>
             Cancel
           </ElButton>
         {{else}}
@@ -40,14 +33,18 @@
         {{/liquid-if}}
       </row.col>
     </ElRow>
-
   </ElHeader>
   <ElMain>
-
-    <h2>{{this.model.name}}</h2>
-    <h4>{{this.model.category.title}}</h4>
-    <Inventory::ListPage @addNewInvent={{this.addNewInvent}} @model={{this.model}} @onCancel={{this.toggleAddNewForm}} />
+    <h2>
+      {{this.model.name}}
+    </h2>
+    <h4>
+      {{this.model.category.title}}
+    </h4>
+    <Inventory::ListPage
+      @addNewInvent={{this.addNewInvent}}
+      @model={{this.model}}
+      @onCancel={{this.toggleAddNewForm}}
+    />
   </ElMain>
-
-
 </ElContainer>
