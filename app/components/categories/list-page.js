@@ -86,10 +86,9 @@ export default class ListPage extends Component {
         }
       }).catch();
     } else {
-      this.get('messageBox').alert("Unable to delete this category. There are some medicines with this", "Error", {
+      this.messageBox.alert("Unable to delete this category. There are some medicines with this", "Error", {
         closeOnClickModal: true,
         type: 'warning',
-
       }).then().catch();
     }
 

@@ -1,12 +1,8 @@
-{{el-notification-container}}
-{{liquid-outlet}}
-{{#el-footer height="40px"}}
-  {{#el-button-group}}
-    {{#el-button color="primary" action=(action "changeRoute" "categories")}}
-      Categories
-    {{/el-button}}
-    {{#el-button color="primary" action=(action "changeRoute" "medicines")}}
-      Medicines
-    {{/el-button}}
-  {{/el-button-group}}
-{{/el-footer}}
+<ElNotificationContainer />
+<LiquidOutlet />
+<ElFooter @height="40px">
+  <ElButtonGroup>
+    <ElButton @color="primary" @action={{action this.changeRoute "categories"}}>Categories</ElButton>
+    <ElButton @color="primary" @action={{action this.changeRoute "medicines"}}>Medicines</ElButton>
+  </ElButtonGroup>
+</ElFooter>
